@@ -1,5 +1,36 @@
 ---
 const pageTitle = "Sobre mi";
+
+const identity = {
+  firstName: "Daniel",
+  country: "Colombia",
+  occupation: "Estudiante",
+  hobbies: [
+    "Programar",
+    "Leer",
+    "Jugar Videojuegos",
+    "Nadar",
+    "Trasnochar viendo youtube",
+  ],
+};
+
+const skills = [
+  "HTML",
+  "CSS",
+  "Java",
+  "Spring",
+  "Angular",
+  "Typescript",
+  "Python",
+];
+
+const happy = true;
+const finished = false;
+const goal = 3;
+
+const skillcolor = "green";
+const fontWeight = "bold";
+const textCase = "uppercase";
 ---
 
 <html lang="en">
@@ -9,6 +40,17 @@ const pageTitle = "Sobre mi";
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
+    <style define:vars={{ skillcolor , fontWeight, textCase}}>
+      h1 {
+        color: purple;
+        font-size: 4rem;
+      }
+      .skill {
+        color: var(--skillcolor);
+        font-weight: var(--fontWeight);
+        text-transform: var(--textCase);
+      }
+    </style>
   </head>
   <body>
     <p>
@@ -23,5 +65,32 @@ const pageTitle = "Sobre mi";
       Me gusta la programación, estudio ingeniería de sistemas, y pronto me iré
       a vivir unos meses en méxico!
     </p>
+    <p>Estos son unos datos sobre mi:</p>
+    <ul>
+      <li>Mi nombre es: {identity.firstName}</li>
+      <li>Vivo en {identity.country} y me ocupo como {identity.occupation}</li>
+      {
+        identity.hobbies.length >= 2 && (
+          <li>
+            Dos de mis hobbies son {identity.hobbies[0]} y {identity.hobbies[1]}
+          </li>
+        )
+      }
+    </ul>
+    <h2>Una lista de algunas de mis habilidades</h2>
+    <ul>
+      {skills.map((skill) => <li class="skill">{skill}</li>)}
+    </ul>
+
+    <h3>Aprendiendo a usar renderizado condicional</h3>
+    {happy && <p>Que chimba estar apprendiendo a usar Astro!</p>}
+    {finished && <p>Ya terminé este tutorial</p>}
+    {
+      goal === 3 ? (
+        <p>Mi meta es terminar el tutorial en tres días</p>
+      ) : (
+        <p>Mi meta no es terminar el tutorial en tres días</p>
+      )
+    }
   </body>
 </html>
