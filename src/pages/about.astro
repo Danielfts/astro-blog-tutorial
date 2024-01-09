@@ -1,4 +1,5 @@
 ---
+import Navigation from '../components/navigation.astro';
 import '../styles/global.css';
 const pageTitle = "Sobre mi";
 
@@ -55,9 +56,7 @@ const textCase = "uppercase";
   </head>
   <body>
     <p>
-      <a href="/"><strong>Home</strong></a>
-      <a href="/about/"><strong>About</strong></a>
-      <a href="/blog/"><strong>Blog</strong></a>
+      <Navigation />
     </p>
     <h1>{pageTitle}</h1>
     <strong>Mi nombre es Daniel Felipe</strong>
